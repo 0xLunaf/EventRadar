@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111;
+  color: white;
+  font-family: sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.indhold {
+  flex: 1;
+  padding: 20px;
+}
+
+.bundmenu {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  background: #1a1a1a;
+  border-top: 1px solid #333;
+}
+
+.bundmenu button {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.bundmenu button.aktiv {
+  color: white;
+  background: #333;
+}
