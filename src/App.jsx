@@ -1,28 +1,41 @@
 import { useState } from 'react'
 import './App.css'
+import Velkomst from './sider/Velkomst'
+import Login from './sider/Login'
+import Kort from './sider/Kort'
+import Profil from './sider/Profil'
 
 function App() {
-  const [side, setSide] = useState('kort')
+  const [side, setSide] = useState('velkomst')
+  const [loggetInd, setLoggetInd] = useState(false)
+  const [bruger, setBruger] = useState(null)
 
   return (
     <div className="app">
-      
-      {/* Indhold */}
-      <div className="indhold">
-        {side === 'kort' && <div className="side"><h2>🗺️ Kort</h2></div>}
-        {side === 'events' && <div className="side"><h2>📋 Events</h2></div>}
-        {side === 'opret' && <div className="side"><h2>➕ Opret Event</h2></div>}
-        {side === 'profil' && <div className="side"><h2>👤 Profil</h2></div>}
-      </div>
-
-      {/* Bundmenu */}
-      <nav className="bundmenu">
-        <button onClick={() => setSide('kort')} className={side === 'kort' ? 'aktiv' : ''}>🗺️ Kort</button>
-        <button onClick={() => setSide('events')} className={side === 'events' ? 'aktiv' : ''}>📋 Events</button>
-        <button onClick={() => setSide('opret')} className={side === 'opret' ? 'aktiv' : ''}>➕ Opret</button>
-        <button onClick={() => setSide('profil')} className={side === 'profil' ? 'aktiv' : ''}>👤 Profil</button>
-      </nav>
-
+      {side === 'velkomst' && <Velkomst setSide={setSide} />}
+      {side === 'login' && <Login setSide={setSide} setLoggetInd={setLoggetInd} setBruger={setBruger} />}
+      {side === 'kort' && (
+        <>
+          <div className="indhold">
+            <Kort loggetInd={loggetInd} bruger={bruger} />
+          </div>
+          <nav className="bundmenu">
+            <button onClick={() => setSide('kort')} className="aktiv">🗺️ Kort</button>
+            <button onClick={() => setSide('profil')}>👤 Profil</button>
+          </nav>
+        </>
+      )}
+      {side === 'profil' && (
+        <>
+          <div className="indhold">
+            <Profil loggetInd={loggetInd} setLoggetInd={setLoggetInd} setSide={setSide} bruger={bruger} />
+          </div>
+          <nav className="bundmenu">
+            <button onClick={() => setSide('kort')}>🗺️ Kort</button>
+            <button onClick={() => setSide('profil')} className="aktiv">👤 Profil</button>
+          </nav>
+        </>
+      )}
     </div>
   )
 }

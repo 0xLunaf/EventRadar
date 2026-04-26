@@ -43,3 +43,122 @@ body {
   color: white;
   background: #333;
 }
+
+.velkomst {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+  text-align: center;
+  padding: 40px;
+}
+
+.velkomst button {
+  background: white;
+  color: black;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 16px;
+}
+
+.login input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #1a1a1a;
+  color: white;
+  width: 280px;
+  font-size: 15px;
+}
+
+.login button {
+  background: white;
+  color: black;
+  border: none;
+  padding: 10px 32px;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  width: 280px;
+}
+
+.fejl {
+  color: #ff4444;
+  font-size: 14px;
+}
+
+.login p {
+  color: #888;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.kort {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  overflow-x: auto;
+  background: #1a1a1a;
+}
+
+.filter-bar button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.event-form {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 280px;
+  z-index: 1000;
+}
+
+.event-form input, .event-form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: white;
+  font-size: 14px;
+}
+
+.event-form button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
