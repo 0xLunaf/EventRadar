@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Velkomst from './sider/Velkomst'
 import Login from './sider/Login'
@@ -6,9 +6,32 @@ import Kort from './sider/Kort'
 import Profil from './sider/Profil'
 
 function App() {
-  const [side, setSide] = useState('velkomst')
-  const [loggetInd, setLoggetInd] = useState(false)
-  const [bruger, setBruger] = useState(null)
+  const [side, setSide] = useState(() => {
+    return localStorage.getItem('side') || 'velkomst'
+  })
+  const [loggetInd, setLoggetInd] = useState(() => {
+    return localStorage.getItem('loggetInd') === 'true'
+  })
+  const [bruger, setBruger] = useState(() => {
+    try {
+     const gemt = localStorage.getItem('bruger')
+     return gemt && gemt !== 'undefined' ? JSON.parse(gemt) : null
+    } catch {
+      return null
+    }
+  })
+
+  useEffect(() => {
+    localStorage.setItem('side', side)
+  }, [side])
+
+  useEffect(() => {
+    localStorage.setItem('loggetInd', loggetInd)
+  }, [loggetInd])
+
+  useEffect(() => {
+    localStorage.setItem('bruger', JSON.stringify(bruger))
+  }, [bruger])
 
   return (
     <div className="app">

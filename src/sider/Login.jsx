@@ -7,8 +7,9 @@ function Login({ setSide, setLoggetInd, setBruger }) {
   const [erSignup, setErSignup] = useState(false)
 
   const handleSubmit = async () => {
-    const url = erSignup ? 'http://192.168.86.36:3001/signup' : 'http://192.168.86.36:3001/login'
-    
+    const SERVER = `http://${window.location.hostname}:3001`
+    const url = erSignup ? `${SERVER}/signup` : `${SERVER}/login`
+
     const svar = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -16,9 +17,8 @@ function Login({ setSide, setLoggetInd, setBruger }) {
     })
 
     const data = await svar.json()
-
     if (!svar.ok) return setFejl(data.fejl)
-    
+
     setLoggetInd(true)
     setBruger(data.bruger)
     setSide('kort')

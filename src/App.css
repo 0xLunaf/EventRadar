@@ -7,80 +7,104 @@
 body {
   background: #111;
   color: white;
-  font-family: sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow: hidden;
 }
 
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100dvh;
 }
 
 .indhold {
   flex: 1;
-  padding: 20px;
+  overflow: hidden;
+  position: relative;
 }
 
+/* Bundmenu */
 .bundmenu {
   display: flex;
   justify-content: space-around;
-  padding: 12px 0;
+  padding: 12px 0 20px 0;
   background: #1a1a1a;
-  border-top: 1px solid #333;
+  border-top: 1px solid #222;
 }
 
 .bundmenu button {
   background: none;
   border: none;
-  color: #888;
-  font-size: 14px;
+  color: #666;
+  font-size: 13px;
   cursor: pointer;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 8px 32px;
+  border-radius: 12px;
 }
 
 .bundmenu button.aktiv {
   color: white;
-  background: #333;
+  background: #2a2a2a;
 }
 
+/* Velkomst */
 .velkomst {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100dvh;
   gap: 20px;
   text-align: center;
   padding: 40px;
+}
+
+.velkomst h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.velkomst p {
+  color: #888;
+  font-size: 16px;
 }
 
 .velkomst button {
   background: white;
   color: black;
   border: none;
-  padding: 12px 32px;
-  border-radius: 20px;
+  padding: 14px 40px;
+  border-radius: 25px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  margin-top: 20px;
 }
 
+/* Login */
 .login {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  gap: 16px;
+  height: 100dvh;
+  gap: 12px;
+  padding: 40px;
+}
+
+.login h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
 }
 
 .login input {
-  padding: 10px 16px;
-  border-radius: 8px;
+  padding: 14px 16px;
+  border-radius: 12px;
   border: 1px solid #333;
   background: #1a1a1a;
   color: white;
-  width: 280px;
+  width: 100%;
+  max-width: 320px;
   font-size: 15px;
 }
 
@@ -88,11 +112,14 @@ body {
   background: white;
   color: black;
   border: none;
-  padding: 10px 32px;
-  border-radius: 20px;
+  padding: 14px;
+  border-radius: 25px;
   font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  width: 280px;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 8px;
 }
 
 .fejl {
@@ -106,24 +133,36 @@ body {
   font-size: 14px;
 }
 
+/* Kort */
 .kort {
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
 }
 
 .filter-bar {
   display: flex;
   gap: 8px;
-  padding: 10px;
+  padding: 10px 12px;
   overflow-x: auto;
   background: #1a1a1a;
+  scrollbar-width: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.filter-bar::-webkit-scrollbar {
+  display: none;
 }
 
 .filter-bar button {
-  background: #333;
+  background: #222;
   color: white;
-  border: none;
+  border: 1px solid #333;
   padding: 6px 14px;
   border-radius: 20px;
   white-space: nowrap;
@@ -131,34 +170,343 @@ body {
   font-size: 13px;
 }
 
+.filter-bar button.aktiv {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
+/* Leaflet kort fylder alt */
+.leaflet-container {
+  height: 100% !important;
+  width: 100% !important;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+}
+
+.leaflet-top.leaflet-left {
+  top: 50px;
+}
+
+/* Event form */
 .event-form {
   position: absolute;
-  bottom: 80px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: #1a1a1a;
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 280px;
+  width: 90%;
+  max-width: 320px;
   z-index: 1000;
+  border: 1px solid #333;
+}
+
+.event-form h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
 }
 
 .event-form input, .event-form select {
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
   border: 1px solid #333;
   background: #111;
   color: white;
   font-size: 14px;
 }
 
+.event-form select option {
+  background: #111;
+}
+
 .event-form button {
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 600;
+}
+
+.event-form button:first-of-type {
+  background: white;
+  color: black;
+}
+
+.event-form button:last-of-type {
+  background: #333;
+  color: white;
+}
+
+.bottom-sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  border-radius: 20px 20px 0 0;
+  z-index: 1000;
+  border-top: 1px solid #333;
+  padding-bottom: 20px;
+}
+
+.bottom-sheet-bar {
+  width: 40px;
+  height: 4px;
+  background: #444;
+  border-radius: 2px;
+  margin: 12px auto 8px auto;
+  cursor: pointer;
+}
+
+.bottom-sheet-indhold {
+  padding: 10px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bottom-sheet-indhold h2 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.bottom-sheet-indhold p {
+  color: #aaa;
+  font-size: 15px;
+}
+
+.event-kategori {
+  font-size: 13px;
+  color: #888;
+}
+
+.deltag-btn {
+  background: white;
+  color: black;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.annuller-btn {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.bottom-sheet-indhold input,
+.bottom-sheet-indhold select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: #111;
+  color: white;
+  font-size: 14px;
+}
+
+.opret-knap {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: white;
+  color: black;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.vælg-position-banner {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  z-index: 1000;
+  border: 1px solid #333;
+  white-space: nowrap;
+}
+
+.profil {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.profil-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #222;
+}
+
+.profil-header h2 {
+  font-size: 16px;
+  color: #aaa;
+}
+
+.log-ud-btn {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.faner {
+  display: flex;
+  border-bottom: 1px solid #222;
+}
+
+.faner button {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #666;
+  padding: 14px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 2px solid transparent;
+}
+
+.faner button.aktiv {
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+.event-liste {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-kort {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #222;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.event-kort-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.event-titel {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.event-beskrivelse {
+  color: #888;
+  font-size: 14px;
+}
+
+.event-knapper {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.event-knapper button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.historik {
+  background: #111;
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.historik h4 {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.historik-item {
+  border-top: 1px solid #222;
+  padding: 8px 0;
+}
+
+.historik-dato {
+  font-size: 11px;
+  color: #666;
+}
+
+.ingen {
+  color: #666;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+.profil-ikke-logget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+}
+
+.profil-ikke-logget button {
+  background: white;
+  color: black;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.event-dato {
+  color: #888;
+  font-size: 13px;
+}
+
+.slet-btn {
+  background: #2a1a1a !important;
+  color: #ff4444 !important;
 }
